@@ -9,7 +9,7 @@ const thirdSlice = originalArray.slice(6, 9); // Elements from index 6 to 8 (3 e
 let tempVar; // Temporary variable for swapping array elements
 
 // Function to modify the position of elements in a sliced array
-function modifySlicedArrayElementsPosition(slicedArray) {
+function swapArrayElements(slicedArray) {
     tempVar = slicedArray[0];
     slicedArray[0] = slicedArray[1];
     slicedArray[1] = slicedArray[2];
@@ -17,34 +17,25 @@ function modifySlicedArrayElementsPosition(slicedArray) {
     return slicedArray;
 }
 
-// Function to shuffle and print an array
-function shuffleAndPrintArray(arrayToShuffle) {
-    tempVar = arrayToShuffle[0];
-    arrayToShuffle[0] = arrayToShuffle[1];
-    arrayToShuffle[1] = arrayToShuffle[2];
-    arrayToShuffle[2] = tempVar;
-    return arrayToShuffle;
-}
-
 // Function to generate a Sudoku board
-function getSudokuBoard() {
+function generateSudokuBoard() {
     for (let index = 0; index < 3; index++) {
-        // Modify the position of elements in sliced arrays 'firstSlice', 'secondSlice', and 'thirdSlice'
-        const modifiedFirstSlice = modifySlicedArrayElementsPosition(firstSlice);
-        const modifiedSecondSlice = modifySlicedArrayElementsPosition(secondSlice);
-        const modifiedThirdSlice = modifySlicedArrayElementsPosition(thirdSlice);
+        // Modify the position of elements in sliced arrays: 'firstSlice', 'secondSlice', and 'thirdSlice'
+        const modifiedFirstSlice = swapArrayElements(firstSlice);
+        const modifiedSecondSlice = swapArrayElements(secondSlice);
+        const modifiedThirdSlice = swapArrayElements(thirdSlice);
 
         // Create an array with modified slices
         const modifiedArray = [modifiedFirstSlice, modifiedSecondSlice, modifiedThirdSlice];
 
         // Print the shuffled array three times
         for (let indexb = 0; indexb < 3; indexb++) {
-            console.log(shuffleAndPrintArray(modifiedArray).join("\t"));
+            console.log(swapArrayElements(modifiedArray).join("\t"));
         }
 
         console.log("\n"); // Print a new line after each set of iterations
     }
 }
 
-// Call the getSudokuBoard function to generate and print the Sudoku board
-getSudokuBoard();
+// Call the generateSudokuBoard function to generate and print the Sudoku board
+generateSudokuBoard();
